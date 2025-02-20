@@ -40,6 +40,11 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(3, activation='softmax')
 ])
 
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
+# Train the model
+test_predict = model.fit(x_train, y_train, epochs=20, validation_data=(x_test, y_test))
+
 def player(prev_play, opponent_history=[]):
     opponent_history.append(prev_play)
 
